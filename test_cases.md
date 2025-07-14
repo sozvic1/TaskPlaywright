@@ -8,3 +8,4 @@
 8. User try to open dashboar throw Url 
 9. Validate Button in left bottom (click for open, click close)
 10. Click menu and chouse field and after check for some change 
+11. Validate input field when add new task(title, description)

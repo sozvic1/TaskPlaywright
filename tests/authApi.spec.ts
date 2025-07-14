@@ -20,7 +20,7 @@ test.beforeAll('GenerateData for all test', ()=>{
 // register new user
 test.describe('User Authentication API', () => {
   
-  test('should register a new user successfully', async ({request}) => {    
+  test('should register a new user successfully', {tag: '@api'}, async ({request}) => {    
 
     // Send Post for register end point
     const response = await request.post(`${API_URL}/register`, {
@@ -35,7 +35,7 @@ test.describe('User Authentication API', () => {
     expect(responseBody.message).toBe('User registered successfully')
   })
 
-  test('should return 400 for invalid data during registration',  async ({request}) => {
+  test('should return 400 for invalid data during registration',{tag: '@api'},  async ({request}) => {
     // incorect data with mismatch password
      const requestBodyWithWrong = {
       email: 'user@example.com',
@@ -58,7 +58,7 @@ test.describe('User Authentication API', () => {
   })
  
   // Test for login
-  test('should authenticate a user and start a session', async ({request}) => {
+  test('should authenticate a user and start a session',{tag: '@api'}, async ({request}) => {
     const data = JSON.parse(readFileSync('test-data.json', 'utf-8'));    
     const requestBody = {
       email: data.email,
@@ -66,16 +66,16 @@ test.describe('User Authentication API', () => {
     };
 
     // Send POST-to login
-     // Send POST-to login this have a bug insight url missed 
+     // Send POST-to login this have a bug insight url missed api
     const response = await request.post(`http://localhost:3000/auth/login`, {    
       data: requestBody,
     })
-
+   console.log(response)
     // validate response status - 200 (OK)
     expect(response.status()).toBe(200)    
   })
 
-  test('should return 400 if authentication fails', async ({request}) => {
+  test('should return 400 if authentication fails',{tag: '@api'}, async ({request}) => {
     const requestBody = {
       email: 'user@example.com',
       password: 'wrongPassword123',

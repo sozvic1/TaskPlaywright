@@ -35,7 +35,14 @@ newTaskForm: async({page, formLogin}, use)=>{
     //navigate and sign up user
     const data = JSON.parse(readFileSync('test-data.json', 'utf-8'));  
     formLogin.userLoginandClickButton(data)
-    const dashboard = new Daschboard(page)
+    const dashboard = new Daschboard(page)    
+
+  // Получаем cookies после успешного логина
+  const cookies = (await page.context().cookies()); 
+  console.log("Cookies:", cookies); // Печатаем все cookies для отладки
+
+  // Ищем нужный cookie, в котором хранится токен (например, 'next-auth.session-token')   
+   process.env['ACCESS_TOKEN'] = cookies[0]?.value
    
     await use(dashboard)
 }

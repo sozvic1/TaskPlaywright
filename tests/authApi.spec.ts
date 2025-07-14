@@ -27,10 +27,14 @@ test.describe('User Authentication API', () => {
       data: requestBody,
     })
 
-    const responseBody = await response.json()
-    expect(response.status()).toBe(201)
+  // Ищем нужную cookie
+  //const tokenCookie = cookies.find(cookie => cookie.name === 'next-auth.session-token');
+  
+  // Проверка, что cookie найдена
+  //expect(tokenCookie).toBeDefined();
 
-    // Validate body json
+    const responseBody = await response.json()
+    expect(response.status()).toBe(201)    
     
     expect(responseBody.message).toBe('User registered successfully')
   })

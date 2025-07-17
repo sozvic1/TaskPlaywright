@@ -29,7 +29,7 @@ export default defineConfig<TestOptions>({
     {name: 'chromium',
       use: { ...devices['Desktop Chrome'],
       storageState: '.auth/user.json',
-      globalsURL: 'http://localhost:3000/'
+      baseURL: 'http://localhost:3000/'
       },
                 
       workers: 1      
@@ -40,7 +40,7 @@ export default defineConfig<TestOptions>({
       testMatch:"authApi.spec.ts",
       use: {
       storageState: '.auth/user.json',
-      globalsURL: 'http://localhost:3000/'
+      baseURL: 'http://localhost:3000/'
       },
       dependencies:['setup'],      
       workers: 1      

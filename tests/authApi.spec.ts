@@ -27,12 +27,6 @@ test.describe('User Authentication API', () => {
       data: requestBody,
     })
 
-  // Ищем нужную cookie
-  //const tokenCookie = cookies.find(cookie => cookie.name === 'next-auth.session-token');
-  
-  // Проверка, что cookie найдена
-  //expect(tokenCookie).toBeDefined();
-
     const responseBody = await response.json()
     expect(response.status()).toBe(201)    
     
@@ -89,7 +83,6 @@ test.describe('User Authentication API', () => {
       data: requestBody,
     })
 
-    console.log(response)
     expect(response.status()).toBe(400)
     
   })

@@ -20,7 +20,7 @@ export default defineConfig<TestOptions>({
     'Authorization': `token= ${process.env.ACCESS_TOKEN}`
     },
     video:{
-      mode:'on'
+      mode:'off'
     }  
   },
   
@@ -30,7 +30,8 @@ export default defineConfig<TestOptions>({
       use: { ...devices['Desktop Chrome'],
       storageState: '.auth/user.json',
       globalsURL: 'http://localhost:3000/'
-      },          
+      },
+                
       workers: 1      
       
     },
@@ -55,12 +56,7 @@ export default defineConfig<TestOptions>({
   //         size: {width: 1920, height: 1080}
   //       }
   //   }
-  // },
-
-  //   {
-  //     name: 'webkit',
-  //     use: { ...devices['Desktop Safari'] },
-  //   },
+  // },  
  
   ],
  

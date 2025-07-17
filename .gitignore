@@ -8,3 +8,6 @@ node_modules/
 .auth/
 test-data.json
 test-data.json
+cookie-data.json
+test-data.json
+test-data.json

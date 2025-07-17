@@ -2,7 +2,7 @@ import {test as base } from '@playwright/test'
 import { SignUp } from './page-objects/signUp'
 import { Login } from './page-objects/login'
 import { Daschboard } from './page-objects/dashBoard'
-import { readFileSync } from 'fs';
+import { readFileSync, writeFileSync } from 'fs';
 
 
 export type TestOptions = {
@@ -37,12 +37,7 @@ newTaskForm: async({page, formLogin}, use)=>{
     formLogin.userLoginandClickButton(data)
     const dashboard = new Daschboard(page)    
 
-  // Получаем cookies после успешного логина
-  const cookies = (await page.context().cookies()); 
-  console.log("Cookies:", cookies); // Печатаем все cookies для отладки
-
-  // Ищем нужный cookie, в котором хранится токен (например, 'next-auth.session-token')   
-   process.env['ACCESS_TOKEN'] = cookies[0]?.value
+  
    
     await use(dashboard)
 }

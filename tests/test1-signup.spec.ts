@@ -8,12 +8,11 @@ import { writeFileSync } from 'fs'
     
     const registerData = DataFaker.generateRegisterData()    
     const email = registerData.email
-    const password = registerData.password
-    
+    const password = registerData.password    
     //save credentials
     writeFileSync('test-data.json', JSON.stringify({ email, password }));
-    await formRegisterPage.register(registerData)   
-
+    
+    await formRegisterPage.register(registerData)
     await expect(formRegisterPage.page).toHaveURL('http://localhost:3000/dashboard')
     
   })
